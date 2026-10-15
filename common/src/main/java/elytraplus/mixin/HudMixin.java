@@ -4,13 +4,14 @@ import elytraplus.feature.ElytraHud;
 import elytraplus.feature.Freelook;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.Hud;
+import net.minecraft.client.gui.Gui;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(Hud.class)
+// 26.1 draws the hotbar in Gui; 26.2+ moved it to Hud.
+@Mixin(Gui.class)
 abstract class HudMixin {
     /** Only runs when vanilla draws the hotbar, so the slot hides with it (F1, spectator, etc.). */
     @Inject(method = "extractItemHotbar", at = @At("TAIL"))

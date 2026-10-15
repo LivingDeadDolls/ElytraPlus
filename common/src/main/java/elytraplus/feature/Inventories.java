@@ -23,7 +23,7 @@ public final class Inventories {
     /** True when no screen is open and nothing is held on the cursor, so clicks cannot disturb the player. */
     public static boolean canClick(Minecraft minecraft, LocalPlayer player) {
         return minecraft.gameMode != null
-                && minecraft.gui.screen() == null
+                && minecraft.screen == null
                 && !player.isSpectator()
                 && player.containerMenu == player.inventoryMenu
                 && player.inventoryMenu.getCarried().isEmpty();
