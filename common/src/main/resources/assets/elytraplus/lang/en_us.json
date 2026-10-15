@@ -1,0 +1,23 @@
+{
+  "elytraplus.config.title": "Elytra Plus",
+  "elytraplus.config.category.features": "Features",
+  "elytraplus.config.category.hud": "HUD",
+  "elytraplus.config.auto_switch_elytra": "Auto Switch Elytra",
+  "elytraplus.config.auto_switch_elytra.desc": "Jumping in mid-air puts on the best elytra from your inventory.\n\nWhen you land, your previous chest item goes back on.",
+  "elytraplus.config.auto_switch_third_person": "Auto Switch Third Person",
+  "elytraplus.config.auto_switch_third_person.desc": "Starting to fly with an elytra in first person switches to the rear third-person view.\n\nWhen you land, the view goes back to first person. If you change the view yourself while flying, it is left as is.",
+  "elytraplus.config.firework_hotkey": "Firework Hotkey",
+  "elytraplus.config.firework_hotkey.desc": "While flying with an elytra, press the key to use a firework rocket. The rocket doesn't need to be in your hand; anywhere in your inventory works.\n\nAssign the key under Controls → Elytra Plus.",
+  "elytraplus.config.freelook": "Freelook",
+  "elytraplus.config.freelook.desc": "While flying with an elytra, holding the key makes the mouse turn only the camera. You can look around without changing the direction you fly.\n\nAssign the key under Controls → Elytra Plus.",
+  "elytraplus.config.freelook.freelookplus.desc": "While flying with an elytra, you can use Freelook: the mouse turns only the camera, so you can look around without changing the direction you fly.\n\nFreelook is provided by Freelook Plus. Assign the key under Controls → Freelook Plus.\n\nThis setting is shared with Freelook Plus's Elytra setting.",
+  "elytraplus.config.freelook.freelookplus_off": " (Off in Freelook Plus)",
+  "elytraplus.config.freelook.freelookplus_off.desc": "Freelook is turned off in Freelook Plus's settings, so it can't be used while flying, regardless of this setting. To use it, turn it on under Freelook Plus → General.",
+  "elytraplus.config.elytra_slot": "Elytra Slot",
+  "elytraplus.config.elytra_slot.desc": "While wearing an elytra, shows an elytra slot next to the hotbar.\n\nYou can check its durability there.",
+  "elytraplus.config.firework_slot": "Firework Slot",
+  "elytraplus.config.firework_slot.desc": "While wearing an elytra, shows a firework slot next to the elytra slot.\n\nIt shows the rocket that will be used next and how many rockets you have in total, including those in shulker boxes and bundles.\n\nHidden when you have no rockets.",
+  "key.category.elytraplus.main": "Elytra Plus",
+  "key.elytraplus.firework_hotkey": "Firework Hotkey",
+  "key.freelookplus.freelook": "Freelook"
+}

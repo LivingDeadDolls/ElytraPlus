@@ -1,0 +1,43 @@
+{
+    "schemaVersion": 1,
+    "id": "${mod_id}",
+    "version": "${version}+${minecraft_version}",
+    "name": "${mod_name}",
+    "description": "${description}",
+    "authors": [
+        "${mod_author}"
+    ],
+    "contact": {
+        "sources": "https://github.com/LivingDeadDolls/ElytraPlus",
+        "issues": "https://github.com/LivingDeadDolls/ElytraPlus/issues"
+    },
+    "license": "${license}",
+    "environment": "client",
+    "entrypoints": {
+        "client": [
+            "elytraplus.ElytraPlusFabric"
+        ],
+        "modmenu": [
+            "elytraplus.ModMenuIntegration"
+        ]
+    },
+    "mixins": [
+        "${mod_id}.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": ">=${fabric_loader_version}",
+        "fabric-api": "*",
+        "yet_another_config_lib_v3": "*",
+        "minecraft": "${fabric_minecraft_dependency}",
+        "java": ">=${java_version}"
+    },
+    "suggests": {
+        "modmenu": "*",
+        "freelookplus": "*"
+    },
+    "custom": {
+        "freelookplus:shared_settings": [
+            "elytra"
+        ]
+    }
+}

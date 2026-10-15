@@ -1,0 +1,23 @@
+{
+  "elytraplus.config.title": "Elytra Plus",
+  "elytraplus.config.category.features": "機能",
+  "elytraplus.config.category.hud": "HUD",
+  "elytraplus.config.auto_switch_elytra": "Auto Switch Elytra",
+  "elytraplus.config.auto_switch_elytra.desc": "空中でジャンプすると、インベントリにある一番良いエリトラに自動で着替えます。\n\n着地すると、元の胴装備に戻します。",
+  "elytraplus.config.auto_switch_third_person": "Auto Switch Third Person",
+  "elytraplus.config.auto_switch_third_person.desc": "一人称視点でエリトラで飛び始めると、三人称視点（背面）に切り替えます。\n\n着地すると、一人称視点に戻します。飛んでいる間に自分で視点を変えた場合は、そのままにします。",
+  "elytraplus.config.firework_hotkey": "Firework Hotkey",
+  "elytraplus.config.firework_hotkey.desc": "エリトラで飛んでいる間にキーを押すと、花火を使います。花火は手に持っていなくても、インベントリにあれば使えます。\n\nキーは操作設定の「Elytra Plus」で割り当ててください。",
+  "elytraplus.config.freelook": "Freelook",
+  "elytraplus.config.freelook.desc": "エリトラで飛んでいる間、キーを押している間はマウスを動かしてもカメラだけが回ります。飛んでいる方向を変えずに周りを見渡せます。\n\nキーは操作設定の「Elytra Plus」で割り当ててください。",
+  "elytraplus.config.freelook.freelookplus.desc": "エリトラで飛んでいる間、Freelook を使えます。マウスを動かしてもカメラだけが回るので、飛んでいる方向を変えずに周りを見渡せます。\n\nFreelook は Freelook Plus のものを使います。キーは操作設定の「Freelook Plus」で割り当ててください。\n\nこの設定は Freelook Plus の「エリトラ」の設定と共通です。",
+  "elytraplus.config.freelook.freelookplus_off": "（Freelook Plus で無効）",
+  "elytraplus.config.freelook.freelookplus_off.desc": "Freelook Plus の設定で Freelook が OFF になっているため、この設定に関係なく、飛んでいる間も使えません。使うには Freelook Plus の「全般」で ON にしてください。",
+  "elytraplus.config.elytra_slot": "Elytra Slot",
+  "elytraplus.config.elytra_slot.desc": "エリトラを装備している間、ホットバーの横にエリトラのスロットを表示します。\n\n耐久値もここで確認できます。",
+  "elytraplus.config.firework_slot": "Firework Slot",
+  "elytraplus.config.firework_slot.desc": "エリトラを装備している間、エリトラのスロットの隣に花火のスロットを表示します。\n\n次に使う花火と、持っている花火の合計数が分かります。合計数にはシュルカーボックスやバンドルの中の花火も含みます。\n\n花火を持っていないときは表示しません。",
+  "key.category.elytraplus.main": "Elytra Plus",
+  "key.elytraplus.firework_hotkey": "Firework Hotkey",
+  "key.freelookplus.freelook": "Freelook"
+}
