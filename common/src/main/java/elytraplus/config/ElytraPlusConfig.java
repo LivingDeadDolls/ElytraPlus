@@ -4,13 +4,18 @@ import elytraplus.Constants;
 import elytraplus.feature.FreelookPlusMod;
 import elytraplus.platform.Services;
 import dev.isxander.yacl3.api.ConfigCategory;
+import dev.isxander.yacl3.api.NameableEnum;
 import dev.isxander.yacl3.api.Option;
 import dev.isxander.yacl3.api.OptionDescription;
+import dev.isxander.yacl3.api.OptionGroup;
 import dev.isxander.yacl3.api.YetAnotherConfigLib;
+import dev.isxander.yacl3.api.controller.EnumControllerBuilder;
+import dev.isxander.yacl3.api.controller.IntegerFieldControllerBuilder;
 import dev.isxander.yacl3.api.controller.TickBoxControllerBuilder;
 import dev.isxander.yacl3.config.v2.api.ConfigClassHandler;
 import dev.isxander.yacl3.config.v2.api.SerialEntry;
 import dev.isxander.yacl3.config.v2.api.serializer.GsonConfigSerializerBuilder;
+import java.util.Locale;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 import net.minecraft.ChatFormatting;
@@ -47,6 +52,76 @@ public final class ElytraPlusConfig {
     @SerialEntry
     public boolean fireworkSlot = true;
 
+    @SerialEntry
+    public HudStyle hudStyle = HudStyle.HOTBAR;
+
+    @SerialEntry
+    public HudAnchor hudAnchor = HudAnchor.HOTBAR;
+
+    /** What the frame around the HUD slots looks like. */
+    public enum HudStyle implements NameableEnum {
+        /** Cut from the hotbar, so it matches the hotbar beside it. */
+        HOTBAR,
+        /** Inventory slots in a small inventory-screen panel. */
+        INVENTORY;
+
+        @Override
+        public Component getDisplayName() {
+            return displayName("hud_style", this);
+        }
+    }
+
+    @SerialEntry
+    public HudSide hudSide = HudSide.MAIN_HAND;
+
+    @SerialEntry
+    public HudOrientation hudOrientation = HudOrientation.HORIZONTAL;
+
+    @SerialEntry
+    public int hudOffsetX = 0;
+
+    @SerialEntry
+    public int hudOffsetY = 0;
+
+    /** What the HUD slots are placed against. */
+    public enum HudAnchor implements NameableEnum {
+        /** Beside the hotbar, like vanilla's offhand slot. */
+        HOTBAR,
+        /** In a top corner of the screen. */
+        TOP,
+        /** In a bottom corner of the screen. */
+        BOTTOM;
+
+        @Override
+        public Component getDisplayName() {
+            return displayName("hud_anchor", this);
+        }
+    }
+
+    /** Which side of the hotbar, or of the screen, the HUD slots go on. */
+    public enum HudSide implements NameableEnum {
+        /** The main-hand side, opposite vanilla's offhand slot. */
+        MAIN_HAND,
+        LEFT,
+        RIGHT;
+
+        @Override
+        public Component getDisplayName() {
+            return displayName("hud_side", this);
+        }
+    }
+
+    /** Whether the HUD slots are lined up across or down. */
+    public enum HudOrientation implements NameableEnum {
+        HORIZONTAL,
+        VERTICAL;
+
+        @Override
+        public Component getDisplayName() {
+            return displayName("hud_orientation", this);
+        }
+    }
+
     public static ElytraPlusConfig get() {
         return HANDLER.instance();
     }
@@ -70,6 +145,21 @@ public final class ElytraPlusConfig {
                                 () -> config.elytraSlot, value -> config.elytraSlot = value))
                         .option(toggle("firework_slot", defaults.fireworkSlot,
                                 () -> config.fireworkSlot, value -> config.fireworkSlot = value))
+                        .option(choice("hud_style", HudStyle.class, defaults.hudStyle,
+                                () -> config.hudStyle, value -> config.hudStyle = value))
+                        .group(OptionGroup.createBuilder()
+                                .name(Component.translatable("elytraplus.config.group.hud_position"))
+                                .option(choice("hud_anchor", HudAnchor.class, defaults.hudAnchor,
+                                        () -> config.hudAnchor, value -> config.hudAnchor = value))
+                                .option(choice("hud_side", HudSide.class, defaults.hudSide,
+                                        () -> config.hudSide, value -> config.hudSide = value))
+                                .option(choice("hud_orientation", HudOrientation.class, defaults.hudOrientation,
+                                        () -> config.hudOrientation, value -> config.hudOrientation = value))
+                                .option(offset("hud_offset_x", defaults.hudOffsetX,
+                                        () -> config.hudOffsetX, value -> config.hudOffsetX = value))
+                                .option(offset("hud_offset_y", defaults.hudOffsetY,
+                                        () -> config.hudOffsetY, value -> config.hudOffsetY = value))
+                                .build())
                         .build()))
                 .generateScreen(parent);
     }
@@ -106,5 +196,27 @@ public final class ElytraPlusConfig {
                 .binding(defaultValue, getter, setter)
                 .controller(TickBoxControllerBuilder::create)
                 .build();
+    }
+
+    private static <E extends Enum<E>> Option<E> choice(String key, Class<E> type, E defaultValue, Supplier<E> getter, Consumer<E> setter) {
+        return Option.<E>createBuilder()
+                .name(Component.translatable("elytraplus.config." + key))
+                .description(OptionDescription.of(Component.translatable("elytraplus.config." + key + ".desc")))
+                .binding(defaultValue, getter, setter)
+                .controller(option -> EnumControllerBuilder.create(option).enumClass(type))
+                .build();
+    }
+
+    private static Option<Integer> offset(String key, int defaultValue, Supplier<Integer> getter, Consumer<Integer> setter) {
+        return Option.<Integer>createBuilder()
+                .name(Component.translatable("elytraplus.config." + key))
+                .description(OptionDescription.of(Component.translatable("elytraplus.config." + key + ".desc")))
+                .binding(defaultValue, getter, setter)
+                .controller(option -> IntegerFieldControllerBuilder.create(option).range(-1000, 1000))
+                .build();
+    }
+
+    private static Component displayName(String key, Enum<?> value) {
+        return Component.translatable("elytraplus.config." + key + "." + value.name().toLowerCase(Locale.ROOT));
     }
 }
